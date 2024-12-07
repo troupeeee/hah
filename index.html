@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>troupe</title>
+  <link rel="stylesheet" href="biostyle.css">
+  <style>
+    .ctebtn {
+      font-size: 24px;
+      font-weight: bold;
+      background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 300% 300%;
+      background-clip: text;
+      color: transparent;
+      animation: rainbow 3s linear infinite;
+    }
+
+    @keyframes rainbow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Grandfather clock swinging animation */
+    @keyframes swing {
+      0% {
+        transform: rotate(10deg); /* Start by rotating slightly to the left */
+      }
+      50% {
+        transform: rotate(-10deg); /* Swing to the right */
+      }
+      100% {
+        transform: rotate(10deg); /* Return back to the left */
+      }
+    }
+
+    .pfp {
+      animation: swing 2s ease-in-out infinite; /* Apply the swing animation to the profile picture */
+      transform-origin: top center; /* Set the rotation origin to top center (like a pendulum) */
+    }
+
+    /* Other styles */
+    .container {
+      background-color: transparent;
+      border: none;
+    }
+
+    .bio {
+      color: black;
+    }
+
+    .username {
+      color: black;
+    }
+
+    .bonj {
+      color: black;
+      border: none;
+      background: transparent;
+    }
+
+    .bonj img {
+      filter: grayscale(100%) contrast(100%) brightness(100%);
+    }
+
+    /* Style for volume control */
+    #volume-control {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      display: none; /* Initially hidden */
+    }
+
+    /* Styling for the volume slider */
+    #volume-slider {
+      -webkit-appearance: none; /* Removes default styling in some browsers */
+      appearance: none;
+      width: 150px;
+      height: 8px;
+      background: #ccc; /* Gray background */
+      border-radius: 5px;
+      outline: none;
+      transition: background 0.3s ease;
+    }
+
+    #volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff; /* White thumb */
+      border: 2px solid #000; /* Black border */
+      cursor: pointer;
+    }
+
+    #volume-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff; /* White thumb */
+      border: 2px solid #000; /* Black border */
+      cursor: pointer;
+    }
+
+    #volume-slider::-ms-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff; /* White thumb */
+      border: 2px solid #000; /* Black border */
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="enter-site">
+    <h3 class="ctebtn">
+      [ CLICK ]
+    </h3>
+  </div>
+
+  <div id="content">
+    <audio id="audio" src="https://github.com/troupeeee/troupe.lol/raw/refs/heads/main/song.mp3" loop></audio>
+    <video id="video" muted>
+      <source src="https://github.com/troupeeee/troupe.lol/raw/refs/heads/main/video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="center">
+      <div class="container">
+        <div class="center">
+          <img class="pfp" src="https://github.com/troupeeee/troupe.lol/blob/main/IMG_0852.png?raw=true">
+        </div>
+        <div class="center">
+          <p class="username">
+            <xan class="sparkle">troupe</xan>
+          </p>
+        </div>
+        <div class="center">
+          <p class="bio">@vampire9721469 @triggerbotter</p>
+        </div>
+        <div class="center">
+          <a href="https://www.tiktok.com/@troupe" target="_blank"><button class="bonj"><img src="imgs/tiktok.png" alt="tiktok" height="30px"></button></a>
+          <a href="https://www.roblox.com/users/707209709/profile" target="_blank"><button class="bonj"><img src="imgs/roblox.png" alt="roblox" height="30px"></button></a>
+          <a href="https://www.youtube.com/@EquaIizerAPO" target="_blank"><button class="bonj"><img src="imgs/youtube.png" alt="youtube" height="30px"></button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Volume control slider (initially hidden) -->
+  <div id="volume-control">
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.65">
+  </div>
+
+  <!-- Link to funny.js -->
+  <script src="funny.js"></script>
+
+  <script>
+    // Add functionality for entering the site
+    document.addEventListener('click', function() {
+        const enterSiteDiv = document.getElementById('enter-site');
+        const contentDiv = document.getElementById('content');
+        const container = contentDiv.querySelector('.container');
+        const audio = document.getElementById('audio');
+        const video = document.getElementById('video');
+        const volumeControl = document.getElementById('volume-control');
+  
+        enterSiteDiv.style.display = 'none';
+  
+        container.classList.add('show');
+  
+        audio.volume = 0.65;
+        audio.loop = true; 
+        audio.play();
+        video.play();
+
+        // Show the volume control after clicking to enter the site
+        volumeControl.style.display = 'block';
+    }, { once: true });
+
+    // Volume control functionality
+    const volumeSlider = document.getElementById('volume-slider');
+    const audio = document.getElementById('audio');
+
+    volumeSlider.addEventListener('input', function() {
+      audio.volume = volumeSlider.value;
+    });
+  </script>
+</body>
+</html>
