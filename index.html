@@ -95,12 +95,32 @@
       margin: 10px 0;
     }
 
-    /* Profile Image */
+    /* Profile Image Flickering */
+    @keyframes flicker {
+      0% {
+        opacity: 1;
+      }
+      25% {
+        opacity: 0.6;
+      }
+      50% {
+        opacity: 1;
+      }
+      75% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
     .pfp {
       width: 150px;
       height: 150px;
       border-radius: 50%;
       margin-bottom: 20px;
+      animation: flicker 1.5s infinite; /* Apply the flicker effect */
+      animation-timing-function: steps(1, jump-none); /* Make the flicker happen abruptly */
     }
 
     /* Links and Buttons */
@@ -126,16 +146,17 @@
     /* Volume Control */
     #volume-control {
       position: fixed;
-      top: 10px;
-      left: 10px;
+      top: 20px; /* Position it 20px from the top */
+      left: 50%;
+      transform: translateX(-50%); /* Center it horizontally */
       z-index: 1000;
-      display: none;
+      width: 200px;
     }
 
     #volume-slider {
       -webkit-appearance: none;
       appearance: none;
-      width: 150px;
+      width: 100%;
       height: 8px;
       background: #fff;
       border-radius: 5px;
@@ -202,9 +223,9 @@
   <div class="container">
     <!-- Profile Image -->
     <div class="center">
-      <img class="pfp" src="https://github.com/troupeeee/hah/blob/main/imgs/3d10a5e700d4c860749569b4859c640c.png?raw=true" alt="profile picture">
+      <img class="pfp" src="https://github.com/troupeeee/hah/blob/main/imgs/0aee8d98a8970a705f4e1a04f6d34ae7.jpg?raw=true" alt="profile picture">
     </div>
-
+  
     <!-- Username -->
     <div class="center">
       <p class="username"></p>
@@ -212,7 +233,8 @@
 
     <!-- Bio -->
     <div class="center">
-      <p class="bio">@iraaaq</p>
+      <p class="bio">@iraaaq 
+       @tr.upe</p>
     </div>
 
     <!-- Social Media Links -->
